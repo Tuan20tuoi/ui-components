@@ -39,6 +39,7 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   // Variant styles
+  
   const variantStyles: React.CSSProperties = 
     variant === 'primary'
       ? { backgroundColor: '#007bff', color: '#fff' }
