@@ -114,9 +114,35 @@ export const ProfileFrame: React.FC<ProfileFrameProps> = ({
     left: '50%',
     transform: 'translate(-50%, -50%)',
     textAlign: 'center',
-    color: '#e53e3e',
-    fontSize: '14px',
+    padding: '24px',
+    maxWidth: '500px',
     display: error ? 'block' : 'none',
+  };
+
+  const errorTitleStyles: React.CSSProperties = {
+    fontSize: '18px',
+    fontWeight: 'bold',
+    color: '#e53e3e',
+    marginBottom: '12px',
+  };
+
+  const errorMessageStyles: React.CSSProperties = {
+    fontSize: '14px',
+    color: '#666',
+    lineHeight: '1.6',
+    marginBottom: '16px',
+  };
+
+  const linkButtonStyles: React.CSSProperties = {
+    display: 'inline-block',
+    padding: '10px 20px',
+    backgroundColor: '#3182ce',
+    color: '#fff',
+    textDecoration: 'none',
+    borderRadius: '6px',
+    fontSize: '14px',
+    fontWeight: 500,
+    transition: 'all 0.2s ease',
   };
 
   const handleLoad = () => {
@@ -139,7 +165,26 @@ export const ProfileFrame: React.FC<ProfileFrameProps> = ({
       )}
       
       <div style={errorStyles}>
-        Unable to load profile. Please check the URL or try again later.
+        <div style={errorTitleStyles}>⚠️ Không thể load profile</div>
+        <div style={errorMessageStyles}>
+          Website có thể đã chặn việc hiển thị trong iframe do chính sách bảo mật (X-Frame-Options).
+          <br />
+          Bạn có thể truy cập trực tiếp tại đây:
+        </div>
+        <a 
+          href={url} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={linkButtonStyles}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = '#2c5282';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = '#3182ce';
+          }}
+        >
+          Mở trang web →
+        </a>
       </div>
 
       <iframe
@@ -150,6 +195,7 @@ export const ProfileFrame: React.FC<ProfileFrameProps> = ({
         title="Profile"
         allowFullScreen
         loading="lazy"
+        sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
         {...props}
       />
     </div>
