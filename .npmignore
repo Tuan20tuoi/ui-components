@@ -1,0 +1,6 @@
+# Chỉ publish thư mục dist
+*
+!dist/
+!package.json
+!README.md
+!LICENSE
