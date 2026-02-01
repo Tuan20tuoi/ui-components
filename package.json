@@ -1,6 +1,6 @@
 {
   "name": "@npm-tuan17tuii/ui-components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A lightweight React + TypeScript UI Component Library",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
